@@ -1,0 +1,22 @@
+@(firstnames: List[Firstname])
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Firstname</th>
+        <th>Gender</th>
+        <th>Origin</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for(firstname <- firstnames) {
+    <tr>
+        <td>@firstname.getId()</td>
+        <td>@firstname.getFirstname()</td>
+        <td>@firstname.getGender()</td>
+        <td>@firstname.getOrigin()</td>
+    </tr>
+    }
+    </tbody>
+</table>
