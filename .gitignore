@@ -6,7 +6,6 @@
 /RUNNING_PID
 .DS_Store
 
-/dist
 /project/target
 /project/plugins/target
 /project/project
@@ -21,4 +20,7 @@ tmp/
 test-result
 *.iml
 *.eml
+/dist/
+bin/
+/db
 .cache
