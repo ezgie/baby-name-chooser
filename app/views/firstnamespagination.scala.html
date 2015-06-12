@@ -9,15 +9,15 @@
         <li><a href="@routes.Application.index(currentPage - 1)">&laquo;</a></li>
         }
 
-        @if(utils.TemplateHelpers.getMinPage(currentPage, pageCount) > 1) {
+        @if(utils.TemplateHelpers.getMinPage(currentPage) > 1) {
         <li><a href="@routes.Application.index(1)">1</a></li>
         }
 
-        @if(utils.TemplateHelpers.getMinPage(currentPage, pageCount) > 2) {
+        @if(utils.TemplateHelpers.getMinPage(currentPage) > 2) {
             <li><a href="@routes.Application.index(2)">2</a></li>
         }
 
-        @if(utils.TemplateHelpers.getMinPage(currentPage, pageCount) > 3) {
+        @if(utils.TemplateHelpers.getMinPage(currentPage) > 3) {
         <li class="disabled"><span>...</span></li>
         }
 
