@@ -1,3 +1,4 @@
+@(fl: List[String], ll: List[String])
 <div class="container filters">
     <div class="row">
         <div class="col-xs-3 col-xs-offset-3">
@@ -10,13 +11,13 @@
             <div class="col-xs-2 col-xs-offset-3">
                 <div id="firstLetter">
                     <span class="filter-header">ilk harfi</span>
-                    @alphabet()
+                    @alphabet(fl)
                 </div>
             </div>
             <div class="col-xs-2">
                 <div id="lastLetter">
                     <span class="filter-header">son harfi</span>
-                    @alphabet()
+                    @alphabet(ll)
                 </div>
             </div>
             <div class="col-xs-2">
@@ -29,13 +30,13 @@
             <div class="col-xs-2 col-xs-offset-3">
                 <div id="contains-selected">
                     <span class="filter-header">Secili harfleri kapsayan</span>
-                    @alphabet()
+                    @alphabet(ll)
                 </div>
             </div>
             <div class="col-xs-2">
                 <div id="not-contains-selected">
                     <span class="filter-header">Secili harfleri kapsamayan</span>
-                    @alphabet()
+                    @alphabet(ll)
                 </div>
             </div>
             <div class="col-xs-2">

@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer, firstnames: List[Firstname])
+@(currentPage: Integer, pageCount: Integer, firstnames: List[Firstname], fl: List[String], ll: List[String])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +35,7 @@
         <span>bebis isimleri</span>
     </div>
 
-    @filters()
+    @filters(fl, ll)
     @firstnamespagination(currentPage, pageCount)
     @firstnamestable(firstnames)
     </div>
