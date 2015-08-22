@@ -3,6 +3,7 @@ package utils;
 import com.google.common.collect.ContiguousSet;
 import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.Range;
+import play.Logger;
 
 import java.util.List;
 
@@ -12,8 +13,11 @@ public class TemplateHelpers {
     public static int SHOW_COUNT = 10;
 
     public static List<Integer> createRange(Integer page, Integer pageCount) {
+
+        Logger.debug("page:" + page + " pageCount:" + pageCount);
         int minNumbering = getMinPage(page);
         int maxNumbering = getMaxPage(page, pageCount);
+        Logger.debug("min:" + minNumbering + " max:" + maxNumbering);
         return ContiguousSet.create(Range.closed(minNumbering, maxNumbering), DiscreteDomain.integers()).asList();
     }
 
