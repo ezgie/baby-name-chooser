@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer)
+@(currentPage: Integer, pageCount: Integer, fl: List[String], ll: List[String])
 
 <nav>
     <ul class="pagination">
@@ -10,11 +10,11 @@
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 1) {
-        <li><a href="@routes.Application.index(1)">1</a></li>
+        <li><a href="@routes.Application.index(1, fl, ll)">1</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 2) {
-            <li><a href="@routes.Application.index(2)">2</a></li>
+            <li><a href="@routes.Application.index(2, fl, ll)">2</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 3) {
@@ -25,7 +25,7 @@
         @if(currentPage == index) {
         <li class="disabled"><span>@index</span></li>
         } else {
-        <li><a href="@routes.Application.index(index)">@index</a></li>
+        <li><a href="@routes.Application.index(index, fl, ll)">@index</a></li>
         }
         }
 
@@ -34,18 +34,18 @@
         }
 
         @if(utils.TemplateHelpers.getMaxPage(currentPage, pageCount) < pageCount - 1) {
-        <li><a href="@routes.Application.index(pageCount-1)">@(pageCount-1)</a></li>
+        <li><a href="@routes.Application.index(pageCount-1, fl, ll)">@(pageCount-1)</a></li>
         }
 
         @if(utils.TemplateHelpers.getMaxPage(currentPage, pageCount) < pageCount) {
-        <li><a href="@routes.Application.index(pageCount)">@pageCount</a></li>
+        <li><a href="@routes.Application.index(pageCount, fl, ll)">@pageCount</a></li>
         }
 
 
         @if(currentPage >= (pageCount-1)) {
         <li class="disabled"><span>&raquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage + 1)">&raquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage + 1, fl, ll)">&raquo;</a></li>
         }
     </ul>
 </nav>
