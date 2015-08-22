@@ -28,7 +28,7 @@ public class Application extends Controller {
         andJunction.endJunction();
         PagedList<Firstname> currentPage = andJunction.findPagedList(page - 1, PAGE_SIZE);
         Logger.debug("currentPage.getTotalPageCount() : " + currentPage.getTotalPageCount());
-        return ok(home.render(page, currentPage.getTotalPageCount(), PAGE_SIZE, currentPage.getList()));
+        return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList()));
     }
 
     public void addAndJunctionForFirstLetters(ExpressionList<Firstname> andJunction, List<String> letters) {

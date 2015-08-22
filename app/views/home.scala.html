@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer, pageSize: Integer, firstnames: List[Firstname])
+@(currentPage: Integer, pageCount: Integer, firstnames: List[Firstname])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +36,8 @@
     </div>
 
     @filters()
-    @firstnamespagination(currentPage, pageCount, pageSize)
+    @firstnamespagination(currentPage, pageCount)
     @firstnamestable(firstnames)
-    <!--<ul id="names">-->
-
-    <!--</ul>-->
     </div>
 </body>
 <script type="text/javascript" src='@routes.Assets.versioned("javascripts/lib/jquery-2.1.4.js")'></script>
