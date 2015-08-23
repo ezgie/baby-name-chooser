@@ -36,8 +36,14 @@
     </div>
 
     @filters(fl, ll)
-    @firstnamespagination(currentPage, pageCount, fl, ll)
-    @firstnamestable(firstnames)
+    @if(pageCount == 0) {
+    <div>
+        <span>No name found - TEXT TO BE DONE</span>
+    </div>
+    } else {
+        @firstnamespagination(currentPage, pageCount, fl, ll)
+        @firstnamestable(firstnames)
+    }
     </div>
 </body>
 <script type="text/javascript" src='@routes.Assets.versioned("javascripts/lib/jquery-2.1.4.js")'></script>
