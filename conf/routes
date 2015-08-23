@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index(page: Integer?=1, fl: java.util.List[String]?=java.util.Collections.emptyList(), ll: java.util.List[String]?=java.util.Collections.emptyList())
+GET     /                           controllers.Application.index(page: Integer?=1, fl: java.util.List[String]?=java.util.Collections.emptyList(), ll: java.util.List[String]?=java.util.Collections.emptyList(), contains: java.util.List[String]?=java.util.Collections.emptyList(), notContains: java.util.List[String]?=java.util.Collections.emptyList())
 # GET     /names                      controllers.Application.names()
 
 # Map static resources from the /public folder to the /assets URL path

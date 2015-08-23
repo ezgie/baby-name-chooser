@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer, fl: List[String], ll: List[String])
+@(currentPage: Integer, pageCount: Integer, fl: List[String], ll: List[String], contains: List[String], notContains: List[String])
 
 <nav>
     <ul class="pagination">
@@ -6,11 +6,11 @@
         @if(currentPage == 1) {
         <li class="disabled"><span>&laquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage - 1)">&laquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage - 1, fl, ll, contains, notContains))">&laquo;</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 1) {
-        <li><a href="@routes.Application.index(1, fl, ll)">1</a></li>
+        <li><a href="@routes.Application.index(1, fl, ll, contains, notContains)">1</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 2) {
@@ -21,7 +21,7 @@
         @if(currentPage == index) {
         <li class="disabled"><span>@index</span></li>
         } else {
-        <li><a href="@routes.Application.index(index, fl, ll)">@index</a></li>
+        <li><a href="@routes.Application.index(index, fl, ll, contains, notContains)">@index</a></li>
         }
         }
 
@@ -30,14 +30,14 @@
         }
 
         @if(utils.TemplateHelpers.getMaxPage(currentPage, pageCount) < pageCount) {
-        <li><a href="@routes.Application.index(pageCount, fl, ll)">@pageCount</a></li>
+        <li><a href="@routes.Application.index(pageCount, fl, ll, contains, notContains)">@pageCount</a></li>
         }
 
 
         @if(currentPage >= (pageCount-1)) {
         <li class="disabled"><span>&raquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage + 1, fl, ll)">&raquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage + 1, fl, ll, contains, notContains)">&raquo;</a></li>
         }
     </ul>
 </nav>

@@ -1,4 +1,4 @@
-@(fl: List[String], ll: List[String])
+@(fl: List[String], ll: List[String], contains: List[String], notContains: List[String])
 <div class="container filters">
     <div class="row">
         <div class="col-md-3 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
@@ -28,15 +28,15 @@
         </div>
         <div class="row filter">
             <div class="col-md-2 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
-                <div id="contains-selected">
+                <div id="contains">
                     <span class="filter-header">Secili harfleri kapsayan</span>
-                    @alphabet(ll)
+                    @alphabet(contains)
                 </div>
             </div>
             <div class="col-md-2 col-xs-6 col-sm-2">
-                <div id="not-contains-selected">
+                <div id="notContains">
                     <span class="filter-header">Secili harfleri kapsamayan</span>
-                    @alphabet(ll)
+                    @alphabet(notContains)
                 </div>
             </div>
             <!--<div class="col-md-2 col-xs-6 col-sm-2">-->

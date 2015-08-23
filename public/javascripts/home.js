@@ -17,6 +17,8 @@ $(function(){
         var queryParams = "";
         queryParams = updateQueryParams(queryParams, findLetters("firstLetter"), "fl" );
         queryParams = updateQueryParams(queryParams, findLetters("lastLetter"), "ll" );
+        queryParams = updateQueryParams(queryParams, findLetters("contains"), "contains" );
+        queryParams = updateQueryParams(queryParams, findLetters("notContains"), "notContains" );
 
         window.location.href = "/?" + queryParams;
     });
