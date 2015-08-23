@@ -9,8 +9,8 @@ import java.util.List;
 
 public class TemplateHelpers {
 
-    public static int MIDDLE = 5;
-    public static int SHOW_COUNT = 10;
+    public static int MIDDLE = 1;
+    public static int SHOW_COUNT = 2;
 
     public static List<Integer> createRange(Integer page, Integer pageCount) {
 
