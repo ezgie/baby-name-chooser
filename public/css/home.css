@@ -37,8 +37,25 @@ body {
   cursor: pointer;
   cursor: hand;
 }
-#open-filters:hover, #close-filters:hover, .letter:hover {
+
+#open-filters {
+  background-color: #F6F6F6;
+  color: #8B8C90;
+
+}
+
+#close-filters {
+  background-color: #8B8C90;
+  color: #EAE9E7;
+}
+
+#open-filters:hover, .letter:hover {
   color: #FF7473;
+}
+
+#close-filters:hover {
+  background-color: #FF7473;
+  color: #EAE9E7;
 }
 
 #filters-content {
