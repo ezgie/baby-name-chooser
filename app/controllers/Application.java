@@ -30,6 +30,7 @@ public class Application extends Controller {
         addAndJunctionForContainingLetters(andJunction, contains);
         addAndJunctionForNotContainingLetters(andJunction, notContains);
         andJunction.endJunction();
+        andJunction.setOrderBy(FIELD_FIRST_NAME);
         PagedList<Firstname> currentPage = andJunction.findPagedList(page - 1, PAGE_SIZE);
         Logger.debug("currentPage.getTotalPageCount() : " + currentPage.getTotalPageCount());
         return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList(), fl, ll, contains, notContains));
