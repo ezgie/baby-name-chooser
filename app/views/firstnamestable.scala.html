@@ -1,6 +1,6 @@
 @(firstnames: List[Firstname])
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover table-responsive">
     <thead>
     <tr>
         <th>#</th>
@@ -11,11 +11,18 @@
     </thead>
     <tbody>
     @for(firstname <- firstnames) {
-    <tr>
+    <tr data-toggle="collapse" data-target="#demo@firstname.getId()" class="accordion-toggle">
         <td>@firstname.getId()</td>
         <td>@firstname.getFirstname()</td>
         <td>@firstname.getGender()</td>
         <td>@firstname.getOrigin()</td>
+    </tr>
+    <tr>
+        <td colspan="12" class="hiddenRow">
+            <div class="meaning accordian-body collapse" id="demo@firstname.getId()">
+                <span>@firstname.getMeaning()</span>
+            </div>
+        </td>
     </tr>
     }
     </tbody>
