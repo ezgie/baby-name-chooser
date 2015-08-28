@@ -12,7 +12,7 @@
     @for(firstname <- firstnames) {
     <tr data-toggle="collapse" data-target="#demo@firstname.getId()" class="accordion-toggle">
         <td>@firstname.getFirstname()</td>
-        <td>@firstname.getGender()</td>
+        <td>@{Messages("gender." + firstname.getGender())}</td>
         <td>@firstname.getOrigin()</td>
     </tr>
     <tr>
