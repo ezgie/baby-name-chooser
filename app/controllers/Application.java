@@ -8,11 +8,9 @@ import play.mvc.Result;
 import views.html.home;
 
 import java.util.List;
+import java.util.Locale;
 
-import static com.avaje.ebean.Expr.icontains;
-import static com.avaje.ebean.Expr.iendsWith;
-import static com.avaje.ebean.Expr.istartsWith;
-import static com.avaje.ebean.Expr.not;
+import static com.avaje.ebean.Expr.*;
 
 public class Application extends Controller {
 
@@ -40,7 +38,7 @@ public class Application extends Controller {
         if(!letters.isEmpty()) {
             ExpressionList conjunction = andJunction.conjunction();
             for (String letter : letters) {
-                conjunction.add(icontains(FIELD_FIRST_NAME, letter));
+                conjunction.add(contains(FIELD_FIRST_NAME, letter));
             }
             conjunction.endJunction();
         }
@@ -48,11 +46,11 @@ public class Application extends Controller {
 
     private void addAndJunctionForNotContainingLetters(ExpressionList<Firstname> andJunction, List<String> letters) {
         if(!letters.isEmpty()) {
-            ExpressionList disjunction = andJunction.disjunction();
+            ExpressionList conjunction = andJunction.conjunction();
             for (String letter : letters) {
-                disjunction.add(not(icontains(FIELD_FIRST_NAME, letter)));
+                conjunction.add(not(contains(FIELD_FIRST_NAME, letter)));
             }
-            disjunction.endJunction();
+            conjunction.endJunction();
         }
     }
 
@@ -60,7 +58,7 @@ public class Application extends Controller {
         if(!letters.isEmpty()) {
             ExpressionList disjunction = andJunction.disjunction();
             for (String letter : letters) {
-                disjunction.add(istartsWith(FIELD_FIRST_NAME, letter));
+                disjunction.add(startsWith(FIELD_FIRST_NAME, letter));
             }
             disjunction.endJunction();
         }
@@ -69,7 +67,7 @@ public class Application extends Controller {
         if(!letters.isEmpty()) {
             ExpressionList disjunction = andJunction.disjunction();
             for (String letter : letters) {
-                disjunction.add(iendsWith(FIELD_FIRST_NAME, letter));
+                disjunction.add(endsWith(FIELD_FIRST_NAME, letter));
             }
             disjunction.endJunction();
         }

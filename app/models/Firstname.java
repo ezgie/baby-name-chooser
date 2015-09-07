@@ -6,10 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Collections;
+import java.util.Locale;
 
 @Entity
 @Table(name = "firstnames")
 public class Firstname extends Model {
+    private static String LOCALE_TR = "tr";
     @Id
     private Long id;
     private String firstname;
@@ -27,6 +29,10 @@ public class Firstname extends Model {
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public String getFirstnameCapitalized() {
+        return firstname.substring(0, 1).toUpperCase(Locale.forLanguageTag(LOCALE_TR)).concat(firstname.substring(1));
     }
 
     public void setFirstname(String firstname) {

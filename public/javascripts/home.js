@@ -28,7 +28,7 @@ $(function(){
     }
 
     var extractText = function(letterSpan) {
-        return $(letterSpan).text();
+        return $(letterSpan).data('letter');
     };
 
     var updateQueryParams = function(queryParams, lettersArray, queryParamName){
