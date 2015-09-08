@@ -83,3 +83,8 @@ body {
 .meaning {
     font-size: 11px;
 }
+
+.meaning > span {
+    padding-left: 6px;
+    color: #999;
+}

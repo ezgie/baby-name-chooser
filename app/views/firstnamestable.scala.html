@@ -10,14 +10,16 @@
     </thead>
     <tbody>
     @for(firstname <- firstnames) {
-    <tr data-toggle="collapse" data-target="#demo@firstname.getId()" class="accordion-toggle">
+    <!--<tr data-toggle="collapse" data-target="#demo@firstname.getId()" class="accordion-toggle">-->
+    <tr>
         <td>@firstname.getFirstnameCapitalized()</td>
         <td>@{Messages("gender." + firstname.getGender())}</td>
         <td>@firstname.getOrigin()</td>
     </tr>
     <tr>
-        <td colspan="12" class="hiddenRow">
-            <div class="meaning accordian-body collapse" id="demo@firstname.getId()">
+        <td colspan="12">
+            <!--<div class="meaning accordian-body collapse" id="demo@firstname.getId()">-->
+            <div class="meaning" id="demo@firstname.getId()">
                 <span>@firstname.getMeaning()</span>
             </div>
         </td>
