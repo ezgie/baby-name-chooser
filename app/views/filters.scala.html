@@ -1,4 +1,4 @@
-@(fl: List[String], ll: List[String], contains: List[String], notContains: List[String])
+@(fl: List[String], ll: List[String], contains: List[String], notContains: List[String], containsText: String)
 <div class="container filters">
     <div class="row">
         <div class="col-md-3 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
@@ -33,6 +33,16 @@
                     <span class="filter-header">Seçili harfleri kapsamayan</span>
                     @alphabet(notContains)
                 </div>
+            </div>
+        </div>
+        <div class="row filter">
+            <div class="col-md-2 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
+                <div id="containingText">
+                    <span class="filter-header">Aşağıdaki harfleri kapsayan</span>
+                    <input class="button button-default" type="text" value="@containsText"/>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 col-sm-2">
             </div>
         </div>
         <div class="row filter">

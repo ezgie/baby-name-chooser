@@ -20,6 +20,8 @@ $(function(){
         queryParams = updateQueryParams(queryParams, findLetters("contains"), "contains" );
         queryParams = updateQueryParams(queryParams, findLetters("notContains"), "notContains" );
 
+        queryParams = addToQueryParam(queryParams, $("div#containingText > input").val(), "containsText" );
+
         window.location.href = "/?" + queryParams;
     });
 
@@ -36,5 +38,9 @@ $(function(){
             queryParams = queryParams + queryParamName + "=" + value + "&";
         });
         return queryParams;
+    }
+
+    var addToQueryParam = function(queryParams, value, queryParamName){
+        return queryParams + queryParamName + "=" + value + "&";
     }
 });
