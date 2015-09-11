@@ -29,31 +29,31 @@ body {
     font-size: 10px;
 }
 
-#open-filters {
+#openFilters {
   font-size: 13px;
 }
 
-#open-filters, #close-filters, .letter {
+#openFilters, #closeFilters, .letter {
   cursor: pointer;
   cursor: hand;
 }
 
-#open-filters {
+#openFilters {
   background-color: #F6F6F6;
   color: #8B8C90;
 
 }
 
-#close-filters {
+#closeFilters {
   background-color: #8B8C90;
   color: #EAE9E7;
 }
 
-#open-filters:hover, .letter:hover {
+#openFilters:hover, .letter:hover {
   color: #FF7473;
 }
 
-#close-filters:hover {
+#closeFilters:hover {
   background-color: #FF7473;
   color: #EAE9E7;
 }

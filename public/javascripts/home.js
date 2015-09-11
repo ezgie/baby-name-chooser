@@ -5,7 +5,7 @@ $(function(){
 //          });
 //    });
 
-    $("#open-filters").click(function() {
+    $("#openFilters").click(function() {
       $( "#filters-content" ).slideToggle( 100 );
     });
 
@@ -13,7 +13,13 @@ $(function(){
       $(this).toggleClass("selected");
     });
 
-    $("#close-filters").click(function() {
+    $("#resetFilters").click(function(){
+        jQuery.map($("span.letter"), function(element){$(element).removeClass("selected")});
+        $("div#containingText > input").val("");
+        jQuery.map($("input[name='gender']:checked"), function(element){$(element).prop("checked", false)});
+    });
+
+    $("#closeFilters").click(function() {
         var queryParams = "";
         queryParams = updateQueryParams(queryParams, findLetters("firstLetter"), "fl" );
         queryParams = updateQueryParams(queryParams, findLetters("lastLetter"), "ll" );
