@@ -6,7 +6,7 @@
         @if(currentPage == 1) {
         <li class="disabled"><span>&laquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage - 1, fl, ll, contains, notContains, containsText, genders))">&laquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage - 1, fl, ll, contains, notContains, containsText, genders)">&laquo;</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 1) {
