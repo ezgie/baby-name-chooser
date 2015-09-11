@@ -21,9 +21,17 @@ $(function(){
         queryParams = updateQueryParams(queryParams, findLetters("notContains"), "notContains" );
 
         queryParams = addToQueryParam(queryParams, $("div#containingText > input").val(), "containsText" );
-
+        queryParams = updateQueryParams(queryParams, getSelectedGenders(), "gender" );
         window.location.href = "/?" + queryParams;
     });
+
+    var getSelectedGenders = function() {
+        return jQuery.map(
+            $("input[name='gender']:checked"),
+            function(genderElement) {
+                return $(genderElement).val();
+            });
+    }
 
     var findLetters = function(idOfAlphabetContainer){
         return jQuery.map($("#"+idOfAlphabetContainer).find(".alphabet").find(".letter.selected"), extractText);

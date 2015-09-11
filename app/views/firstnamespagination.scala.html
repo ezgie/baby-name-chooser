@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer, fl: List[String], ll: List[String], contains: List[String], notContains: List[String], containsText: String)
+@(currentPage: Integer, pageCount: Integer, fl: List[String], ll: List[String], contains: List[String], notContains: List[String], containsText: String, genders: List[String])
 
 <nav>
     <ul class="pagination">
@@ -6,11 +6,11 @@
         @if(currentPage == 1) {
         <li class="disabled"><span>&laquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage - 1, fl, ll, contains, notContains, containsText))">&laquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage - 1, fl, ll, contains, notContains, containsText, genders))">&laquo;</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 1) {
-        <li><a href="@routes.Application.index(1, fl, ll, contains, notContains, containsText)">1</a></li>
+        <li><a href="@routes.Application.index(1, fl, ll, contains, notContains, containsText, genders)">1</a></li>
         }
 
         @if(utils.TemplateHelpers.getMinPage(currentPage) > 2) {
@@ -21,7 +21,7 @@
         @if(currentPage == index) {
         <li class="disabled"><span>@index</span></li>
         } else {
-        <li><a href="@routes.Application.index(index, fl, ll, contains, notContains, containsText)">@index</a></li>
+        <li><a href="@routes.Application.index(index, fl, ll, contains, notContains, containsText, genders)">@index</a></li>
         }
         }
 
@@ -30,14 +30,14 @@
         }
 
         @if(utils.TemplateHelpers.getMaxPage(currentPage, pageCount) < pageCount) {
-        <li><a href="@routes.Application.index(pageCount, fl, ll, contains, notContains, containsText)">@pageCount</a></li>
+        <li><a href="@routes.Application.index(pageCount, fl, ll, contains, notContains, containsText, genders)">@pageCount</a></li>
         }
 
 
         @if(currentPage >= (pageCount-1)) {
         <li class="disabled"><span>&raquo;</span></li>
         } else {
-        <li><a href="@routes.Application.index(currentPage + 1, fl, ll, contains, notContains, containsText)">&raquo;</a></li>
+        <li><a href="@routes.Application.index(currentPage + 1, fl, ll, contains, notContains, containsText, genders)">&raquo;</a></li>
         }
     </ul>
 </nav>

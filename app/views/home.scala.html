@@ -1,4 +1,4 @@
-@(currentPage: Integer, pageCount: Integer, firstnames: List[Firstname], fl: List[String], ll: List[String], contains: List[String], notContains: List[String], containsText: String)
+@(currentPage: Integer, pageCount: Integer, firstnames: List[Firstname], fl: List[String], ll: List[String], contains: List[String], notContains: List[String], containsText: String, genders: List[String])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,15 +34,15 @@
         <!--</nav>-->
         <span>bebiş isimleri</span>
     </div>
-    @filters(fl, ll, contains, notContains, containsText)
+    @filters(fl, ll, contains, notContains, containsText, genders)
     @if(pageCount == 0) {
     <div>
         <span>No name found - TEXT TO BE DONE</span>
     </div>
     } else {
-        @firstnamespagination(currentPage, pageCount, fl, ll, contains, notContains, containsText)
+        @firstnamespagination(currentPage, pageCount, fl, ll, contains, notContains, containsText, genders)
         @firstnamestable(firstnames)
-        @firstnamespagination(currentPage, pageCount, fl, ll, contains, notContains, containsText)
+        @firstnamespagination(currentPage, pageCount, fl, ll, contains, notContains, containsText, genders)
     }
     </div>
 </body>

@@ -17,21 +17,33 @@ public class Application extends Controller {
 
     private static final int PAGE_SIZE = 20;
     private static final String FIELD_FIRST_NAME = "firstname";
+    private static final String FIELD_GENDER = "gender";
 
-    public Result index(Integer page, List<String> fl, List<String> ll, List<String> contains, List<String> notContains, String containsText) {
+    public Result index(Integer page, List<String> firstLetters, List<String> lastLetters, List<String> containsLetters, List<String> notContainsLetters, String containsText, List<String> genders) {
         Logger.debug("containsText : " + containsText);
 
         ExpressionList<Firstname> andJunction = Firstname.FIND.where().conjunction();
-        addAndJunctionForFirstLetters(andJunction, fl);
-        addAndJunctionForLastLetters(andJunction, ll);
-        addAndJunctionForContainingLetters(andJunction, contains);
-        addAndJunctionForNotContainingLetters(andJunction, notContains);
+        addAndJunctionForFirstLetters(andJunction, firstLetters);
+        addAndJunctionForLastLetters(andJunction, lastLetters);
+        addAndJunctionForContainingLetters(andJunction, containsLetters);
+        addAndJunctionForNotContainingLetters(andJunction, notContainsLetters);
         addExpressionForContainsText(andJunction, containsText);
+        addExpressionForGender(andJunction, genders);
         andJunction.endJunction();
         andJunction.setOrderBy(FIELD_FIRST_NAME);
         PagedList<Firstname> currentPage = andJunction.findPagedList(page - 1, PAGE_SIZE);
         Logger.debug("currentPage.getTotalPageCount() : " + currentPage.getTotalPageCount());
-        return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList(), fl, ll, contains, notContains, containsText));
+        return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList(), firstLetters, lastLetters, containsLetters, notContainsLetters, containsText, genders));
+    }
+
+    private void addExpressionForGender(ExpressionList<Firstname> andJunction, List<String> genders) {
+        if(!genders.isEmpty()) {
+            ExpressionList disjunction = andJunction.disjunction();
+            for (String gender : genders) {
+                disjunction.add(eq(FIELD_GENDER, gender));
+            }
+            disjunction.endJunction();
+        }
     }
 
     private void addExpressionForContainsText(ExpressionList<Firstname> andJunction, String containsText) {
