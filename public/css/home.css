@@ -33,7 +33,7 @@ body {
   font-size: 13px;
 }
 
-#openFilters, #closeFilters, .letter {
+#openFilters, #closeFilters, #resetFilters, .letter {
   cursor: pointer;
   cursor: hand;
 }
@@ -44,12 +44,17 @@ body {
 
 }
 
+#resetFilters {
+    display: block;
+    text-align: center;
+}
+
 #closeFilters {
   background-color: #8B8C90;
   color: #EAE9E7;
 }
 
-#openFilters:hover, .letter:hover {
+#openFilters:hover, #resetFilters:hover, .letter:hover {
   color: #FF7473;
 }
 
@@ -87,4 +92,17 @@ body {
 .meaning > span {
     padding-left: 6px;
     color: #999;
+}
+
+label {
+    max-width: 100%;
+    margin-bottom: 0px;
+    font-size: 10px;
+    font-weight: 100;
+}
+
+#containingText > input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
 }

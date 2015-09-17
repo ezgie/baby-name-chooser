@@ -9,6 +9,35 @@
 
         <div class="row filter">
             <div class="col-md-2 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
+                <div id="containingText">
+                    <span class="filter-header">Ara</span>
+                    <input class="btn-block" type="text" value="@containsText"/>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 col-sm-2">
+                <span class="filter-header">Cinsiyet</span>
+                <div>
+                    <label>
+                        <input type="checkbox" name="gender" value="f" @if(genders.contains("f")){checked}>
+                        Kadın
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="gender" value="m" @if(genders.contains("m")){checked}>
+                        Erkek
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="gender" value="u" @if(genders.contains("u")){checked}>
+                        Üniseks
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row filter">
+            <div class="col-md-2 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
                 <div id="firstLetter">
                     <span class="filter-header">İlk harfi</span>
                     @alphabet(fl)
@@ -36,36 +65,8 @@
             </div>
         </div>
         <div class="row filter">
-            <div class="col-md-2 col-md-offset-3 col-xs-6 col-sm-2 col-sm-offset-3">
-                <div id="containingText">
-                    <span class="filter-header">Aşağıdaki harfleri kapsayan</span>
-                    <input class="button button-default" type="text" value="@containsText"/>
-                </div>
-            </div>
-            <div class="col-md-2 col-xs-6 col-sm-2">
-                <div id="gender" class="radio">
-                    <label>
-                        <input type="checkbox" name="gender" value="f" @if(genders.contains("f")){checked}>
-                        Kadın
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="checkbox" name="gender" value="m" @if(genders.contains("m")){checked}>
-                        Erkek
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="checkbox" name="gender" value="u" @if(genders.contains("u")){checked}>
-                        Üniseks
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="row filter">
             <div class="col-md-2 col-md-offset-7 col-xs-12 col-sm-2 col-sm-offset-7 ">
-                <span class="btn btn-default btn-block" id="resetFilters">Filtreleri temizle</span>
+                <span class="btn btn-block" id="resetFilters">Filtreleri kaldır</span>
             </div>
         </div>
         <div class="row filter">
