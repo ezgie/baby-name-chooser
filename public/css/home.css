@@ -106,3 +106,7 @@ label {
     border-radius: 4px;
 
 }
+#origin .form-control {
+    font-size: 10px;
+    color: #999;
+}

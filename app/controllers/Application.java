@@ -7,19 +7,19 @@ import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.home;
-
 import java.util.List;
-
 import static com.avaje.ebean.Expr.*;
+import static java.util.stream.Collectors.toList;
 
 public class Application extends Controller {
-
 
     private static final int PAGE_SIZE = 20;
     private static final String FIELD_FIRST_NAME = "firstname";
     private static final String FIELD_GENDER = "gender";
+    private static final String FIELD_ORIGIN = "origin";
+    private static final String ORIGIN_FILTER = "%,%";
 
-    public Result index(Integer page, List<String> firstLetters, List<String> lastLetters, List<String> containsLetters, List<String> notContainsLetters, String containsText, List<String> genders) {
+    public Result index(Integer page, List<String> firstLetters, List<String> lastLetters, List<String> containsLetters, List<String> notContainsLetters, String containsText, List<String> genders, List<String> origins) {
         Logger.debug("containsText : " + containsText);
 
         ExpressionList<Firstname> andJunction = Firstname.FIND.where().conjunction();
@@ -29,11 +29,25 @@ public class Application extends Controller {
         addAndJunctionForNotContainingLetters(andJunction, notContainsLetters);
         addExpressionForContainsText(andJunction, containsText);
         addExpressionForGender(andJunction, genders);
+        addOrJunctionForOrigins(andJunction, origins);
         andJunction.endJunction();
         andJunction.setOrderBy(FIELD_FIRST_NAME);
         PagedList<Firstname> currentPage = andJunction.findPagedList(page - 1, PAGE_SIZE);
         Logger.debug("currentPage.getTotalPageCount() : " + currentPage.getTotalPageCount());
-        return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList(), firstLetters, lastLetters, containsLetters, notContainsLetters, containsText, genders));
+        return ok(home.render(page, currentPage.getTotalPageCount(), currentPage.getList(), firstLetters, lastLetters, containsLetters, notContainsLetters, containsText, genders, origins, getAllOrigins()));
+    }
+
+    private List<String> getAllOrigins() {
+        return Firstname.FIND
+                .select(FIELD_ORIGIN)
+                .setDistinct(true)
+                .where()
+                .not(ilike(FIELD_ORIGIN, ORIGIN_FILTER))
+                .orderBy(FIELD_ORIGIN)
+                .findList()
+                .stream()
+                .map(Firstname::getOrigin)
+                .collect(toList());
     }
 
     private void addExpressionForGender(ExpressionList<Firstname> andJunction, List<String> genders) {
@@ -57,6 +71,15 @@ public class Application extends Controller {
             ExpressionList conjunction = andJunction.conjunction();
             for (String letter : letters) {
                 conjunction.add(contains(FIELD_FIRST_NAME, letter));
+            }
+            conjunction.endJunction();
+        }
+    }
+    private void addOrJunctionForOrigins(ExpressionList<Firstname> andJunction, List<String> origins) {
+        if(!origins.isEmpty()) {
+            ExpressionList conjunction = andJunction.disjunction();
+            for (String origin : origins) {
+                conjunction.add(contains(FIELD_ORIGIN, origin));
             }
             conjunction.endJunction();
         }

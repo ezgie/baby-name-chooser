@@ -1,9 +1,4 @@
 $(function(){
-//    $.getJSON( "/names", function( json ) {
-//      $.each(json, function (index, obj) {
-//              $("#names").append('<li>' + obj.firstname + '</li>');
-//          });
-//    });
 
     $("#openFilters").click(function() {
       $( "#filters-content" ).slideToggle( 100 );
@@ -13,10 +8,12 @@ $(function(){
       $(this).toggleClass("selected");
     });
 
+
     $("#resetFilters").click(function(){
         jQuery.map($("span.letter"), function(element){$(element).removeClass("selected")});
         $("div#containingText > input").val("");
         jQuery.map($("input[name='gender']:checked"), function(element){$(element).prop("checked", false)});
+        $('#origin select').val("");
     });
 
     $("#closeFilters").click(function() {
@@ -28,6 +25,7 @@ $(function(){
 
         queryParams = addToQueryParam(queryParams, $("div#containingText > input").val(), "containsText" );
         queryParams = updateQueryParams(queryParams, getSelectedGenders(), "gender" );
+        queryParams = updateQueryParams(queryParams, getSelectedOrigins(), "origin" );
         window.location.href = "/?" + queryParams;
     });
 
@@ -37,6 +35,10 @@ $(function(){
             function(genderElement) {
                 return $(genderElement).val();
             });
+    }
+
+    var getSelectedOrigins = function() {
+        return $('#origin select').val();
     }
 
     var findLetters = function(idOfAlphabetContainer){
@@ -57,4 +59,5 @@ $(function(){
     var addToQueryParam = function(queryParams, value, queryParamName){
         return queryParams + queryParamName + "=" + value + "&";
     }
+
 });
