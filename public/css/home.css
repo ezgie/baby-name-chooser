@@ -110,3 +110,10 @@ label {
     font-size: 10px;
     color: #999;
 }
+
+.no-name-found {
+    color: #8B8C90;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

@@ -46,8 +46,14 @@
     </div>
     @filters(fl, ll, contains, notContains, containsText, genders, origins, allOrigins)
     @if(pageCount == 0) {
-    <div>
-        <span>No name found - TEXT TO BE DONE</span>
+    <div class="container no-name-found">
+        <div class="row">
+            <div class="col-md-offset-3 col-xs-12 col-sm-offset-3">
+                <div>
+                    <span>Aradığınız kriterlere uygun bir bebiş ismi bulunamadı.</span>
+                </div>
+            </div>
+        </div>
     </div>
     } else {
         @firstnamespagination(currentPage, pageCount, fl, ll, contains, notContains, containsText, genders, origins)
