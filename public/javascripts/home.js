@@ -8,6 +8,16 @@ $(function(){
       $(this).toggleClass("selected");
     });
 
+    $("#firstLetter .letter").click(deselectOnlyEnglishIfTurkishLetterSelected);
+    $("#lastLetter .letter").click(deselectOnlyEnglishIfTurkishLetterSelected);
+    $("#contains .letter").click(deselectOnlyEnglishIfTurkishLetterSelected);
+    $("#notContains .letter").click(deselectOnlyEnglishIfTurkishLetterSelected);
+
+    function deselectOnlyEnglishIfTurkishLetterSelected(){
+        if($.inArray($(this).data('letter'), ['ç', 'ğ', 'ı', 'ö', 'ş', 'ü']) != -1) {
+            $('#onlyEnglish').attr('checked', false);
+          }
+    }
 
     $("#resetFilters").click(function(){
         jQuery.map($("span.letter"), function(element){$(element).removeClass("selected")});
@@ -38,7 +48,7 @@ $(function(){
     }
 
     var getSelectedOrigins = function() {
-        return $('#origin select').val();
+        return $('#origin select option:selected').map(function() {return this.value })
     }
 
     var findLetters = function(idOfAlphabetContainer){
@@ -60,4 +70,29 @@ $(function(){
         return queryParams + queryParamName + "=" + value + "&";
     }
 
+    $('#onlyEnglish').change(function() {
+        if($(this).is(":checked")) {
+            jQuery.map($('#firstLetter span.letter, #lastLetter span.letter, #contains span.letter')
+                .filter('[data-letter="ç"], [data-letter="ğ"], [data-letter="ı"], [data-letter="ö"], [data-letter="ş"], [data-letter="ü"]'),
+                function(element){$(element).removeClass("selected")});
+
+            jQuery.map($('#notContains span.letter')
+                .filter('[data-letter="ç"], [data-letter="ğ"], [data-letter="ı"], [data-letter="ö"], [data-letter="ş"], [data-letter="ü"]'),
+                function(element){$(element).addClass("selected")});
+
+            var containingText = $("div#containingText > input");
+            if(containsTurkishCharacter(containingText.val())) {
+                containingText.val("");
+            }
+        };
+    });
+
+    function containsTurkishCharacter(text) {
+        return (text.indexOf('ç') > -1
+            || text.indexOf('ğ') > -1
+            || text.indexOf('ı') > -1
+            || text.indexOf('ö') > -1
+            || text.indexOf('ş') > -1
+            || text.indexOf('ü') > -1);
+    }
 });
